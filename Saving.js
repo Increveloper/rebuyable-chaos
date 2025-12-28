@@ -1,3 +1,4 @@
 setInterval(function(){
-    localStorage.setItem()
-})
+    localStorage.setItem("game", JSON.stringify(game))
+}, 60000)
+localStorage.getItem("game")
