@@ -26,5 +26,5 @@ function HardReset(){
             ],
         ],
     ]
-    console.log("Performed reset!", game.points, typeof game.points)
+    console.log("Performed reset!", game.pointgain, typeof game.pointgain)
 }
