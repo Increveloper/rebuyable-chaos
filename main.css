@@ -1,0 +1,58 @@
+html.darkmode {
+    background-color: black;
+    color: white;
+}
+html.lightmode {
+    background-color: white;
+    color: black;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    max-width: 200px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    border-left: 2px solid gray;
+    padding-top: 20px;
+    max-height: 400px;
+}
+.hidden{
+    display: none;
+}
+
+
+.unbuyable{
+    border: 1px solid #444;
+    background-color: #666666;
+}
+.unbuyable:hover{
+    background-color: #333;
+}
+.buyable{
+    box-shadow: 0 0 5px 1px #888;
+    border: 1px solid #444;
+    background-color: #666666;
+}
+.buyable:hover{
+    box-shadow: 0 0 5px 2px #999;
+    background-color: #333;
+}
+.maxed{
+    background-color: #8f8;
+    border: 1px solid #6f6;
+}
+.maxed:hover{
+    background-color: #9f9;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.points{
+    border: 2px solid white;
+    color: white;
+}

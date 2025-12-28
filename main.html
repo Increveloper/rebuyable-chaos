@@ -1,1 +1,52 @@
+<html class="darkmode">
+    <head>
+        <title>Rebuyable Chaos</title>
+        <link rel="stylesheet" src="main.css"/>
+    </head>
 
+    <nav class="sidebar">
+        <button class="Points">Points</button>
+    </nav>
+
+    <body>
+        <div>You have <span id="points">0</span> Points</div>
+        <div>You are gaining <span id="pointGain">1</span> Point per second</div>
+        <div onclick="ShowTab(0, 0)" id="PointsTab">
+            <div id="MainPointsTab">
+                <div>Note that each row of rebuyables resets all prior rows and points, unless stated otherwise.</div>
+                <div>Buyables are maxed at 10, unless said otherwise.</div>
+
+                <div class="row">
+                    <div onclick="BuyR1B1()" id="R1B1" class="rebuyable unbuyable">
+                        <div>B1-1</div>
+                        <div>Gain <span id="R1B1base">1</span> extra point per second</div>
+                        <div>Requires: <span id="R1B1cost">10</span> points</div>
+                        <div>Currently: +<span id="R1B1Effect">0</span></div>
+                        <div>Amount: <span id="R1B1Amount">0</span></div>
+                    </div>
+                </div>
+                <div class="row hidden">
+                    <div id="R2B1" class="rebuyable unbuyable">
+                        <div>B2-1</div>
+                        <div>Multiply B1-1's base by <span id="R2B1base">1.10</span></div>
+                        <div>Requires: 10 B1-1</div>
+                        <div>Currently: *<span id="R2B1Effect">1</span></div>
+                        <div>Amount: <span id="R2B1Amount">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/break_infinity.js@2/dist/break_infinity.min.js"></script>
+        <script src="TabLogic.js"></script>
+        <script src="OperatorHelpers.js"></script>
+        <script src="GameVars.js"></script>
+        <script src="RebuyableVars.js"></script>
+        <script src="ComboVars.js"></script>
+        <script src="Saving.js"></script>
+        <script src="UpgradeLogic.js"></script>
+        <script src="CalculateResources.js"></script>
+        <script src="CalculateBuyables.js"></script>
+        <script src="game.js"></script>
+        <script src="SetInterval.js"></script>
+    </body>
+</html>
