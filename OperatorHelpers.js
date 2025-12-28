@@ -8,7 +8,7 @@ function mul(decimalVar, amount) {
     return decimalVar.times(amount);
 }
 function div(decimalVar, amount) {
-    return decimalVar.div(amount);
+    return decimalVar.dividedBy(amount);
 }
 function pow(decimalVar, amount) {
     return decimalVar.pow(amount);
