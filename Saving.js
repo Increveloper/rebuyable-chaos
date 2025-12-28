@@ -9,7 +9,7 @@ function LoadGame(){
     localStorage.getItem("game")
 }
 function HardReset(){
-    let game = {}
+    game = {}
     game.points = new Decimal(0)
     game.pointgain = new Decimal(1)
     game.rebuyables = [
