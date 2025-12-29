@@ -1,4 +1,4 @@
-let upg = game.rebuyables
+//let upg = game.rebuyablevars
 function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
     let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0]
     let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][1]
