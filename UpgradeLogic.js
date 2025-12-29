@@ -32,7 +32,7 @@ function BuyR1B1(){
     [game.rebuyables[0][0][0][0][0], game.points] = BuyUpgrade(0, 0, 0, game.points)
 }
 function BuyR2B1(){
-    if(game.rebuyables[0][0][0][0][0].gte([0][1][0][0][1])){
+    if(game.rebuyables[0][0][0][0][0].gte(game.rebuyables[0][1][0][0][1])){
         game.points = new Decimal(0)
     }
     [game.rebuyables[0][1][0][0][0], game.rebuyables[0][0][0][0][0]] = BuyUpgrade(0, 1, 0, game.rebuyables[0][0][0][0][0])
