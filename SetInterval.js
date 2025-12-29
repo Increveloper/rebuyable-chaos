@@ -7,6 +7,6 @@ setInterval(function(){
 
     for(let i = 0; i < combos.length; i++){
         const value = combos[i][0]();
-        document.getElementById(combos[i][1]).textContent = value.toString()
+        document.getElementById(combos[i][1]).textContent = value.toFixed(2)
     }
 }, 100)
