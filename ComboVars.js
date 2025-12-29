@@ -1,3 +1,4 @@
+let upg = game.rebuyables
 let combos = [
     [() => game.points, "points"], 
     [() => game.pointgain, "pointGain"], 
@@ -7,5 +8,12 @@ let combos = [
     [() => game.rebuyables[0][0][0][0][0], "R1B1Amount"],
     [() => game.rebuyables[0][1][0][0][2], "R2B1base"],
     [() => game.rebuyables[0][1][0][0][3], "R2B1Effect"],
-    [() => game.rebuyables[0][1][0][0][0], "R2B1Amount"]
+    [() => game.rebuyables[0][1][0][0][0], "R2B1Amount"],
+    [() => game.rebuyables[0][2][0][0][2], "R3B1base"],
+    [() => game.rebuyables[0][2][0][0][3], "R3B1Effect"],
+    [() => game.rebuyables[0][2][0][0][0], "R3B1Amount"],
+    [() => upg[0][2][1][0][2], "R3B2base"],
+    [() => upg[0][2][1][0][1], "R3B2cost"],
+    [() => upg[0][2][1][0][3], "R3B2Effect"],
+    [() => upg[0][2][1][0][0], "R3B2Amount"]
 ]

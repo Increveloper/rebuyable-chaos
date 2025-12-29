@@ -17,7 +17,7 @@
                 <div>Note that each row of rebuyables resets all prior rows and points, unless stated otherwise.</div>
                 <div>Buyables are maxed at 10, unless said otherwise.</div>
 
-                <div class="row">
+                <div id="MainRow1" class="row">
                     <div onclick="BuyR1B1()" id="R1B1" class="rebuyable unbuyable">
                         <div>B1-1</div>
                         <div>Gain <span id="R1B1base">1</span> extra point per second</div>
@@ -26,13 +26,29 @@
                         <div>Amount: <span id="R1B1Amount">0</span></div>
                     </div>
                 </div>
-                <div class="row hidden">
+                <div id="MainRow2" class="row hidden">
                     <div onclick="BuyR2B1()" id="R2B1" class="rebuyable unbuyable">
                         <div>B2-1</div>
                         <div>Multiply B1-1's base by <span id="R2B1base">1.10</span></div>
                         <div>Requires: 10 B1-1</div>
                         <div>Currently: *<span id="R2B1Effect">1</span></div>
                         <div>Amount: <span id="R2B1Amount">0</span></div>
+                    </div>
+                </div>
+                <div id="MainRow3" class="row hidden">
+                    <div onclick="BuyR3B1()" id="R3B1" class="rebuyable unbuyable">
+                        <div>B3-1</div>
+                        <div>Increase B2-1's base by <span id="R3B1base">0.10</span></div>
+                        <div>Requires: 10 B2-1</div>
+                        <div>Currently: +<span id="R3B1Effect">0</span></div>
+                        <div>Amount: <span id="R3B1Amount">0</span></div>
+                    </div>
+                    <div onclick="BuyR3B2()" id="R3B2" class="rebuyable unbuyable">
+                        <div>B3-2</div>
+                        <div>Multiply Point gain by <span id="R3B2base">1.10</span></div>
+                        <div>Requires: <span id="R3B2cost">1000</span> Points</div>
+                        <div>Currently: *<span id="R3B2Effect">1.00</span></div>
+                        <div>Amount: <span id="R3B2Amount">0</span></div>
                     </div>
                 </div>
             </div>

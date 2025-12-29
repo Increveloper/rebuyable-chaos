@@ -3,10 +3,10 @@
 //}, 60000)
 //localStorage.getItem("game")
 function SaveGame(){
-    localStorage.setItem("game", JSON.stringify(game))
+    SavedGame = localStorage.setItem("game", JSON.stringify(game))
 } 
 function LoadGame(){
-    localStorage.getItem("game")
+    parsed = JSON.parse(SavedGame)
 }
 function HardReset(){
     game = {}
@@ -26,5 +26,4 @@ function HardReset(){
             ],
         ],
     ]
-    console.log("Performed reset!", game.pointgain, typeof game.pointgain)
 }

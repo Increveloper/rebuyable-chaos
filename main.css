@@ -22,7 +22,7 @@ body{
     max-height: 400px;
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 
@@ -55,7 +55,7 @@ body{
     justify-content: center;
 }
 
-.points{
+.Points{
     border: 2px solid white;
     color: white;
     background-color: black;

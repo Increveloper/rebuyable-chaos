@@ -1,3 +1,4 @@
+let upg = game.rebuyables
 function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
     let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0]
     let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][1]
@@ -16,6 +17,30 @@ function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
     }
 
 }
+function ResetRows(num, exclusive){
+    if(exclusive !== null && exclusive instanceof Decimal){
+        let Resource = exclusive
+    }
+    if(num >= 0){
+        game.points = new Decimal(0)
+    }
+    if(num >= 1){
+        game.rebuyables[0][0][0][0][0] = new Decimal(0)
+    }
+    if(num >= 2){
+        game.rebuyables[0][1][0][0][0] = new Decimal(0)
+    }
+    if(num >= 3){
+        game.rebuyables[0][2][0][0][0] = new Decimal(0)
+        game.rebuyables[0][2][1][0][0] = new Decimal(0)
+    }
+    return Resource
+}
+function DisplayRow(RowID, Resource, Requirement){
+    if(Resource.gte(Requirement)){
+        document.getElementById(RowID).classList.remove("hidden")
+    }
+}
 function BuyUpgrade(LayerIndex, RowIndex, BuyableIndex, Resource){
     let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0]
     let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][1]
@@ -33,12 +58,28 @@ function BuyR1B1(){
 }
 function BuyR2B1(){
     if(game.rebuyables[0][0][0][0][0].gte(game.rebuyables[0][1][0][0][1])){
-        game.points = new Decimal(0)
+        ResetRows(0, null)
     }
     [game.rebuyables[0][1][0][0][0], game.rebuyables[0][0][0][0][0]] = BuyUpgrade(0, 1, 0, game.rebuyables[0][0][0][0][0])
 }
+function BuyR3B1(){
+    if(game.rebuyables[0][1][0][0][0].gte(game.rebuyables[0][2][0][0][1])){
+        ResetRows(1, null)
+    }
+    [game.rebuyables[0][2][0][0][0], game.rebuyables[0][1][0][0][0]] = BuyUpgrade(0, 2, 0, upg[0][1][0][0][0])
+}
+function BuyB3B2(){
+    if(game.points.gte(game.rebuyables[0][2][1][0][1])){
+        game.points = ResetRows(1, game.points)
+    }
+    [upg[0][2][1][0][0], game.points] = BuyUpgrade(0, 2, 1, game.points)
+}
+
 
 setInterval(function(){
     CheckAvailability(0, 0, 0, game.points)
     CheckAvailability(0, 1, 0, game.rebuyables[0][0][0][0][0])
+
+    DisplayRow("MainRow2", game.rebuyables[0][0][0][0][0], new Decimal(10))
+    DisplayRow("MainRow3", game.rebuyables[0][1][0][0][0], new Decimal(10))
 }, 100)
