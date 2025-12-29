@@ -6,7 +6,8 @@ setInterval(function(){
     game.rebuyables[0][0][0][0][3] = mul(game.rebuyables[0][0][0][0][2], game.rebuyables[0][0][0][0][0])
 
     for(let i = 0; i < combos.length; i++){
-        console.log(combos[i][1], combos[i][0])
-        document.getElementById(combos[i][1]).textContent = combos[i][0].toFixed(2)
+        console.log(combos[i][0](), combos[i][0]() instanceof Decimal, typeof combos[i][0]())
+        const value = combos[i][0]();
+        document.getElementById(combos[i][1]).textContent = value.precision(2)
     }
 }, 100)
