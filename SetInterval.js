@@ -8,6 +8,6 @@ setInterval(function(){
     for(let i = 0; i < combos.length; i++){
         console.log(combos[i][1], combos[i][0](), combos[i][0]() instanceof Decimal, typeof combos[i][0]())
         const value = combos[i][0]();
-        document.getElementById(combos[i][1]).textContent = value.precision(2)
+        document.getElementById(combos[i][1]).textContent = value.toString()
     }
 }, 100)
