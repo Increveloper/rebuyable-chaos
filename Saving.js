@@ -3,7 +3,7 @@
 //}, 60000)
 //localStorage.getItem("game")
 function SaveGame(){
-    SavedGame = localStorage.setItem("game", JSON.stringify(game))
+    SavedGame = localStorage.setItem("game", JSON.stringify(gameObject))
 } 
 function LoadGame(){
     parsed = JSON.parse(SavedGame)
