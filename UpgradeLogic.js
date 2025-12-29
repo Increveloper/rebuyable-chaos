@@ -22,7 +22,7 @@ function BuyUpgrade(LayerIndex, RowIndex, BuyableIndex, Resource){
     let Max = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][4]
     if(Resource.gte(Cost) && Amount.lt(Max)){
         game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0] = add(game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0], new Decimal(1))
-        Resource = sub(Resource, Cost)
+        Resource = new Decimal(0)
     }
 
     return [game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0], Resource]
@@ -30,10 +30,10 @@ function BuyUpgrade(LayerIndex, RowIndex, BuyableIndex, Resource){
 
 function BuyR1B1(){
     [game.rebuyables[0][0][0][0][0], game.points] = BuyUpgrade(0, 0, 0, game.points)
-    game.points = 0
+    game.points = new Decimal(0)
 }
 function BuyR2B1(){
     [game.rebuyables[0][1][0][0][0], game.rebuyables[0][0][0][0][0]] = BuyUpgrade(0, 1, 0, game.rebuyables[0][0][0][0][0])
-    game.points = 0
-    game.rebuyables[0][0][0][0][0] = 0
+    game.points = new Decimal(0)
+    game.rebuyables[0][0][0][0][0] = new Decimal(0)
 }
