@@ -11,5 +11,5 @@ function ShowTab(MainTabIndex, SubTabIndex){
         }
     }
 
-    document.getElementById(tab[MainTabIndex][SubTabIndex])
+    document.getElementById(tab[MainTabIndex][SubTabIndex]).classList.remove("hidden")
 }
