@@ -1,11 +1,11 @@
 function add(decimalVar, amount) {
-    return decimalVar.plus(amount);
+    return decimalVar.add(amount);
 }
 function sub(decimalVar, amount) {
-    return decimalVar.minus(amount);
+    return decimalVar.sub(amount);
 }
 function mul(decimalVar, amount) {
-    return decimalVar.times(amount);
+    return decimalVar.mul(amount);
 }
 function div(decimalVar, amount) {
     return decimalVar.div(amount);
