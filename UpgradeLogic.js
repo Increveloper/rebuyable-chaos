@@ -1,7 +1,7 @@
 function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
-    let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0]
-    let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][1]
-    let Max = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][4]
+    let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0]
+    let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][1]
+    let Max = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][4]
     document.getElementById(`R${RowIndex}B${BuyableIndex}`).classList.remove("unbuyable")
     document.getElementById(`R${RowIndex}B${BuyableIndex}`).classList.remove("buyable")
     document.getElementById(`R${RowIndex}B${BuyableIndex}`).classList.remove("maxed")
@@ -17,9 +17,9 @@ function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
 
 }
 function BuyUpgrade(LayerIndex, RowIndex, BuyableIndex, Resource){
-    let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0]
-    let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][1]
-    let Max = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][4]
+    let Amount = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0]
+    let Cost = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][1]
+    let Max = game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][4]
     if(Resource.gte(Cost) && Amount.lt(Max)){
         game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0] = add(game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0], new Decimal(1))
         Resource = sub(Resource, Cost)
