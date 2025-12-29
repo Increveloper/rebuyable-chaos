@@ -29,11 +29,11 @@ function BuyUpgrade(LayerIndex, RowIndex, BuyableIndex, Resource){
 }
 
 function BuyR1B1(){
-    [game.rebuyables[0][0][0][0], game.points] = BuyUpgrade(0, 0, 0, game.points)
+    [game.rebuyables[0][0][0][0][0], game.points] = BuyUpgrade(0, 0, 0, game.points)
     game.points = 0
 }
 function BuyR2B1(){
-    [game.rebuyables[0][1][0][0], game.rebuyables[0][0][0][0]] = BuyUpgrade(0, 1, 0, game.rebuyables[0][0][0][0])
+    [game.rebuyables[0][1][0][0][0], game.rebuyables[0][0][0][0]] = BuyUpgrade(0, 1, 0, game.rebuyables[0][0][0][0][0])
     game.points = 0
-    game.rebuyables[0][0][0][0] = 0
+    game.rebuyables[0][0][0][0][0] = 0
 }
