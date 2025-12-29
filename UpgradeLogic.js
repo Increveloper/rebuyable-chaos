@@ -37,3 +37,8 @@ function BuyR2B1(){
     game.points = new Decimal(0)
     game.rebuyables[0][0][0][0][0] = new Decimal(0)
 }
+
+setInterval(function(){
+    CheckAvailability(0, 0, 0, game.points)
+    CheckAvailability(0, 1, 0, game.rebuyables[0][0][0][0][0])
+}, 100)
