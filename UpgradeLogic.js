@@ -34,7 +34,7 @@ function ResetRows(num, exclusive){
         game.rebuyables[0][2][0][0][0] = new Decimal(0)
         game.rebuyables[0][2][1][0][0] = new Decimal(0)
     }
-    if(Resource != undefined){
+    if(typeof Resource !== undefined){
         return Resource
     }
 }
