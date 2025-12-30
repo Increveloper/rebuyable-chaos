@@ -18,8 +18,9 @@ function CheckAvailability(LayerIndex, RowIndex, BuyableIndex, Resource){
 
 }
 function ResetRows(num, exclusive){
+    let Resource;
     if(exclusive !== null && exclusive instanceof Decimal){
-        let Resource = exclusive
+        Resource = exclusive
     }
     if(num >= 0){
         game.points = new Decimal(0)

@@ -20,12 +20,12 @@ document.getElementById("loadSave").addEventListener("change", e => {
 
     const reader = new FileReader();
     reader.onload = () => {
-        try {
-            const loaded = JSON.parse(reader.result);
-            Object.assign(game, loaded);
-        } catch {
-            alert("Invalid save file");
-        }
+        //try {
+        const loaded = JSON.parse(reader.result);
+        Object.assign(game, loaded);
+        //} //catch {
+            //alert("Invalid save file");
+        //}
     };
     reader.readAsText(file);
 });
