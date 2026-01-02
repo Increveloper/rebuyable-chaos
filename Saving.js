@@ -29,7 +29,7 @@ function downloadSave(game) {
     const SaveData = {
         rebuyables: serializeRebuyables(game.rebuyables),
         points: game.points?.toString() ?? "0",
-        pointGain: game.pointGain?.toString() ?? "0"
+        pointGain: game.pointgain?.toString() ?? "0"
     }
 
     const data = JSON.stringify(SaveData, null, 2);
@@ -57,9 +57,9 @@ document.getElementById("loadSave").addEventListener("change", e => {
         if (!Array.isArray(loaded.rebuyables)) {
             throw new Error("Invalid rebuyables");
         }
-        game.rebuyables = deserializeRebuyables(loaded.rebuyables ?? 0)
-        game.points = new Decimal(loaded.points ?? 0)
-        game.pointGain = new Decimal(loaded.pointGain ?? 0)
+        game.rebuyables = deserializeRebuyables(loaded.rebuyables) ?? new Decimal("0")
+        game.points = new Decimal(loaded.points ?? "0")
+        game.pointGain = new Decimal(loaded.pointGain ?? "0")
         e.target.value = ""
 
         } catch {
@@ -67,7 +67,6 @@ document.getElementById("loadSave").addEventListener("change", e => {
         }
     };
     reader.readAsText(file);
-
 });
 
 function HardReset(){
