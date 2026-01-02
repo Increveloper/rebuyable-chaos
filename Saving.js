@@ -2,8 +2,37 @@
 //    localStorage.setItem("game", JSON.stringify(game))
 //}, 60000)
 //localStorage.getItem("game")
+function serializeRebuyables(rebuyables) {
+    return rebuyables.map(layer =>
+        layer.map(row =>
+            row.map(buyable =>
+                buyable.map(value => value.toString())
+            )
+        )
+    );
+}
+function deserializeRebuyables(data) {
+    return data.map(layer =>
+        layer.map(row =>
+            row.map(buyable =>
+                buyable.map(value => new Decimal(value))
+            )
+        )
+    );
+}
+
 function downloadSave(game) {
-    const data = JSON.stringify(game, null, 2); // pretty print (optional)
+    const SaveData = {
+        rebuyables: serializeRebuyables(game.rebuyables),
+        points: game.points?.toString() ?? "0",
+        pointGain: game.pointGain?.toString() ?? "0"
+    }
+    if (game === undefined) {
+        alert("Game state is undefined — cannot save");
+        return;
+    }
+
+    const data = JSON.stringify(game, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
@@ -20,14 +49,25 @@ document.getElementById("loadSave").addEventListener("change", e => {
 
     const reader = new FileReader();
     reader.onload = () => {
-        //try {
+        try {
         const loaded = JSON.parse(reader.result);
-        Object.assign(game, loaded);
-        //} //catch {
-            //alert("Invalid save file");
-        //}
+        if (!loaded || typeof loaded !== "object") {
+            throw new Error("Invalid save root");
+        }
+        if (!Array.isArray(loaded.rebuyables)) {
+            throw new Error("Invalid rebuyables");
+        }
+        game.rebuyables = deserializeRebuyables(loaded.rebuyables ?? 0)
+        game.points = new Decimal(loaded.points ?? 0)
+        game.pointGain = new Decimal(loaded.pointGain ?? 0)
+        e.target.value = ""
+
+        } catch {
+            alert("Invalid save file");
+        }
     };
     reader.readAsText(file);
+
 });
 
 function HardReset(){

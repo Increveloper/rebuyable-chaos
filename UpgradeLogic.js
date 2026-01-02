@@ -71,7 +71,7 @@ function BuyR3B1(){
     }
     [game.rebuyables[0][2][0][0][0], game.rebuyables[0][1][0][0][0]] = BuyUpgrade(0, 2, 0, upg[0][1][0][0][0])
 }
-function BuyB3B2(){
+function BuyR3B2(){
     if(game.points.gte(game.rebuyables[0][2][1][0][1])){
         game.points = ResetRows(1, game.points)
     }
