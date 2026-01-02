@@ -6,7 +6,9 @@ function serializeRebuyables(rebuyables) {
     return rebuyables.map(layer =>
         layer.map(row =>
             row.map(buyable =>
-                buyable.map(value => value.toString())
+                buyable.map(value => 
+                    value.map(statistic => statistic.toString())
+                )
             )
         )
     );
@@ -15,7 +17,9 @@ function deserializeRebuyables(data) {
     return data.map(layer =>
         layer.map(row =>
             row.map(buyable =>
-                buyable.map(value => new Decimal(value))
+                buyable.map(value => 
+                    value.map(statistic => new Decimal(statistic))
+                )
             )
         )
     );
