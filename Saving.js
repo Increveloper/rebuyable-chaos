@@ -22,17 +22,17 @@ function deserializeRebuyables(data) {
 }
 
 function downloadSave(game) {
+    if (game === undefined) {
+        alert("Game state is undefined — cannot save");
+        return;
+    }
     const SaveData = {
         rebuyables: serializeRebuyables(game.rebuyables),
         points: game.points?.toString() ?? "0",
         pointGain: game.pointGain?.toString() ?? "0"
     }
-    if (game === undefined) {
-        alert("Game state is undefined — cannot save");
-        return;
-    }
 
-    const data = JSON.stringify(game, null, 2);
+    const data = JSON.stringify(SaveData, null, 2);
     const blob = new Blob([data], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
