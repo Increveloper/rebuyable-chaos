@@ -12,5 +12,5 @@ function CalculateR3B1Base(){
     game.rebuyables[0][2][0][0][2] = new Decimal(0.10)
 }
 function CalculateR3B2Base(){
-    game.rebuyables[0][2][1][0][2] = new Decimal(1.10)
+    game.rebuyables[0][2][1][0][2] = new Decimal(1.50)
 }
