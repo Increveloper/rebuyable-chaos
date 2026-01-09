@@ -80,7 +80,7 @@ function BuyR3B1(){
         console.log("Resource greater than Cost:", Resource.gte(Cost), "Amount lesser than Max:", Amount.lt(Max))
         if(Resource.gte(Cost) && Amount.lt(Max)){
             console.log("Before:", upg[0][2][0][0][0])
-            game.rebuyables[0][2][0][0][0] = add(game.rebuyables[LayerIndex][RowIndex][BuyableIndex][0][0], new Decimal(1))
+            game.rebuyables[0][2][0][0][0] = add(game.rebuyables[0][2][0][0][0], new Decimal(1))
             console.log("After:", upg[0][2][0][0][0])
             upg[0][1][0][0][0] = new Decimal(0)
         }
