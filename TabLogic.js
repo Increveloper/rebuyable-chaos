@@ -1,5 +1,6 @@
-tab = [["MainPointsTab"]]
-tabIndex = [0, 0]
+tab = [["MainPointsTab", "InfoPointsTab", "RebyablePointsPointsTab", "MilestonePointsTab"]]
+tabIndex = [0, 0, 0]
+ShownSubTabs = ["PointsSub"]
 
 function ShowTab(MainTabIndex, SubTabIndex){
     tabIndex[0] = MainTabIndex
@@ -12,4 +13,13 @@ function ShowTab(MainTabIndex, SubTabIndex){
     }
 
     document.getElementById(tab[MainTabIndex][SubTabIndex]).classList.remove("hidden")
+}
+function ShowSubTabs(MainTabIndex){
+    tabIndex[2] = MainTabIndex
+
+    for(let i = 0; i < ShownSubTabs.length; i++){
+        document.getElementById(ShownSubTabs[1]).classList.add("hidden")
+    }
+
+    document.getElementById(ShownSubTabs[MainTabIndex]).classList.remove("hidden")
 }

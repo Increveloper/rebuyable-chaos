@@ -9,6 +9,10 @@ html.lightmode {
 body{
     margin-left: 11vw;
 }
+.subText{
+    font-style: italic;
+    font-size: 50%;
+}
 
 .sidebar {
     position: fixed;

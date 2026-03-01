@@ -6,33 +6,37 @@
     </head>
 
     <nav class="sidebar">
-        <button class="Points">Points</button>
+        <button onclick="ShowTab(0, 0)" class="Points">Points</button>
+        <div id="PointsSub">
+            <button onclick="ShowTab(0, 1)" class="Points">Info</button>
+            <button onclick="ShowTab(0, 2)" id="UnlockRPTab" class="Points hidden">Rebuyable Points</button>
+            <button onclick="ShowTab(0, 3)" id="UnlockPMilesTab" class="Points hidden">Milestones</button>
+        </div>
     </nav>
 
     <body>
         <div>You have <span id="points">0</span> Points</div>
-        <div>You are gaining <span id="pointGain">1</span> Point per second</div>
-        <div onclick="ShowTab(0, 0)" id="PointsTab">
+        <div>You are gaining <span id="pointGain">1</span> Points per second</div>
+        <div id="PointsTab">
             <div id="MainPointsTab">
-                <div>Note that each row of rebuyables resets all prior rows and points, unless stated otherwise.</div>
-                <div>Buyables are maxed at 10, unless said otherwise.</div>
-
                 <div id="MainRow1" class="row">
+                    <div onclick="game.ActiveAuto[0][0] = ToggleAuto(game.ActiveAuto[0][0])" class="AutoToggle hidden">Automation: <span id="PR1Auto">Enabled</span></div>
                     <div onclick="BuyR1B1()" id="R1B1" class="rebuyable unbuyable">
                         <div>B1-1</div>
-                        <div>Gain <span id="R1B1base">1</span> extra point per second</div>
-                        <div>Requires: <span id="R1B1cost">10</span> points</div>
+                        <div>Gain <span id="R1B1base">1</span> extra Points per second</div>
+                        <div>Requires: <span id="R1B1cost">10</span> Points</div>
                         <div>Currently: +<span id="R1B1Effect">0</span></div>
-                        <div>Amount: <span id="R1B1Amount">0</span></div>
+                        <div>Amount: <span id="R1B1Amount">0</span><div id="ShowRB000" class="hidden">+<span id="B1B1Extra">0</span></div></div>
                     </div>
                 </div>
                 <div id="MainRow2" class="row hidden">
+                    <div onclick="gzme.ActiveAuto[0][1] = ToggleAuto(game.AxtiveAuto[0][1])" class="AutoToggle hidden">Automation: <span id="PR2Auto">Enabled</span></div>
                     <div onclick="BuyR2B1()" id="R2B1" class="rebuyable unbuyable">
                         <div>B2-1</div>
                         <div>Multiply B1-1's base by <span id="R2B1base">1.10</span></div>
                         <div>Requires: 10 B1-1</div>
                         <div>Currently: *<span id="R2B1Effect">1</span></div>
-                        <div>Amount: <span id="R2B1Amount">0</span></div>
+                        <div>Amount: <span id="R2B1Amount">0</span><div id="ShowRB010" class="hidden">+<span id="R2B1Extra">0</span></div></div>
                     </div>
                 </div>
                 <div id="MainRow3" class="row hidden">
@@ -41,15 +45,76 @@
                         <div>Increase B2-1's base by <span id="R3B1base">0.10</span></div>
                         <div>Requires: 10 B2-1</div>
                         <div>Currently: +<span id="R3B1Effect">0</span></div>
-                        <div>Amount: <span id="R3B1Amount">0</span></div>
+                        <div>Amount: <span id="R3B1Amount">0</span><div id="ShowRB020" class="hidden">+<span id="R3B1Extra">0</span></div></div>
                     </div>
                     <div onclick="BuyR3B2()" id="R3B2" class="rebuyable unbuyable">
                         <div>B3-2</div>
                         <div>Multiply Point gain by <span id="R3B2base">1.10</span></div>
+                        <div class="subText">Note: Only resets Row 1 and above</div>
                         <div>Requires: <span id="R3B2cost">1000</span> Points</div>
                         <div>Currently: *<span id="R3B2Effect">1.00</span></div>
-                        <div>Amount: <span id="R3B2Amount">0</span></div>
+                        <div>Amount: <span id="R3B2Amount">0</span><div id="ShowRB021" class="hidden">+<span id="R3B2Extra">0</span></div></div>
                     </div>
+                </div>
+                <div id="MainRow4" class="row hidden">
+                    <div onclick="BuyR4B1()" id="R4B1" class="rebuyable unbuyable">
+                        <div>B4-1</div>
+                        <div>Multiply Point gain by <span id="R4B1base">1.00</span></div>
+                        <div>Requires: <span id="R4B1cost">100000</span> points</div>
+                        <div>Currently: *<span id="R4B1Effect">1.00</span></div>
+                        <div>Amount: <span id="R4B1Amount">0</span><div id="ShowRB030" class="hidden">+<span id="R4B1Extra">0</span></div></div>
+                    </div>
+                    <div onclick="BuyR4B2()" id="R4B2" class="rebuyable unbuyable">
+                        <div>B4-2</div>
+                        <div>Add <span id="R4B2base">1.00</span> free level to B2-1 and B1-1</div>
+                        <div>Requires: <span id="R4B2cost">10</span> B3-1</div>
+                        <div>Currently: +<span id="R4B2Effect">0.00</span></div>
+                        <div>Amount: <span id="B4B2Amount">0</span><div id="ShowRB031" class="hidden">+<span id="R4B2Extra">0</span></div></div>
+                    </div>
+                    <div onclick="BuyR4B3()" id="R4B3" class="rebuyable unbuyable">
+                        <div>B4-3</div>
+                        <div>First level unlocks Rebuyable Points. Add <span id="R4B3base">0.01</span> to Rebuyable Points per second per rebuyable</div>
+                        <div>Requires: <span id="R4B3cost">1.00e6</span> Points</div>
+                        <div>Currently: +<span id="R4B3Effect">0.00</span></div>
+                        <div>Amount: <span id="R4B3Amount">0</span><div id="ShowRB032" class="hidden">+<span id="R4B3Extra">0</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="InfoPointsTab" class="hidden">
+                <div>Each row of rebuyables resets all prior rows and Points, unless stated otherwise.</div>
+                <div>Buyables are maxed at 10, unless said otherwise.</div>
+                <div id="info1" class="hidden">Each milestone increases base Point gain by +1</div>
+                <div id="info2" class="hidden">Each RPB level adds a free level to their respective B.</div>
+
+                <div id="info3" class="hidden">
+                    B4-1 Base Formula: <span id="R4B1BaseAdder">1</span> + log<sub><span id="R4B1BaseLogbase">10</span></sub>(points)<sup><span id="R4B1BaseExponent">0.5</span></sup> / <span id="R4B1BaseDivisor">5</span>
+                </div>
+            </div>
+
+            <div id="RebuyablePointsPointsTab" class="hidden">
+                <div>You have <span id="RPAmount">0</span> Rebuyable Points</div>
+                <div>You are gaining <span id="RPGain">0</span> Rebuyable Points per second</div>
+
+                <div id="RProw1" class="row">
+                    <div onclick="BuyL1R1B1()" id="L1R1B1" class="rebuyable unbuyable">
+                        <div>RPB1-1</div>
+                        <div>Boost Points by <span id="L1R1B1base">1</span></div>
+                        <div>Requires: <span id="L1R1B1cost">1</span> Rebuyable Points</div>
+                        <div>Currently: <span id="L1R1B1Effect">1</span></div>
+                        <div>Amount: <span id="L1R1B1Amount">0</span><div id="ShowRB100" class="hidden">+<span id="L1R1B1Extra">0</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="MilestonePointsTab" class="hidden">
+                <div id="PointMile1" class="unachieved">
+                    <div class="MilestoneReq">1 Row 3 rebuyable level</div>
+                    <div>Automate Row 1 and it resets nothing</div>
+                </div>
+                <div id="PointMile2" class="unachieved">
+                    <div class="MilestoneReq">1 Row 4 rebuyable level</div>
+                    <div>Automate row 2 and it resets nothing</div>
                 </div>
             </div>
         </div>
@@ -61,15 +126,20 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/break_infinity.js@2/dist/break_infinity.min.js"></script>
         <script src="TabLogic.js"></script>
-        <script src="OperatorHelpers.js"></script>
+        <script src="Helpers.js"></script>
+        <script src="AutoVars.js"></script>
+        <script src="AutomationLogic.js"></script>
         <script src="GameVars.js"></script>
         <script src="RebuyableVars.js"></script>
+        <script src="MileVars.js"></script>
         <script src="ComboVars.js"></script>
         <script src="Saving.js"></script>
         <script src="UpgradeLogic.js"></script>
+        <script src="MilestoneLogic.js"></script>
         <script src="CalculateResources.js"></script>
         <script src="CalculateBuyables.js"></script>
         <script src="game.js"></script>
         <script src="SetInterval.js"></script>
+        <script src="Format.js"></script>
     </body>
 </html>

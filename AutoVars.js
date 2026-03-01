@@ -1,0 +1,3 @@
+game.ActiveAuto = [
+    [true, true]
+]
